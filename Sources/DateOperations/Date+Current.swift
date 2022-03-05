@@ -11,7 +11,7 @@ import Glibc
 #endif
 
 // MARK: - Enums
-extension Date {
+public extension Date {
     /// SwifterSwift: Day name format.
     ///
     /// - threeLetters: 3 letter day abbreviation of day name.
@@ -46,7 +46,7 @@ extension Date {
 }
 
 // MARK: - Properties
-extension Date {
+public extension Date {
     /// SwifterSwift: User’s current calendar.
     var calendar: Calendar {
         // Workaround to segfault on corelibs foundation https://bugs.swift.org/browse/SR-10147
@@ -496,7 +496,7 @@ extension Date {
 }
 
 // MARK: - Methods
-extension Date {
+public extension Date {
     /// SwifterSwift: Date by adding multiples of calendar component.
     ///
     ///     let date = Date() // "Jan 12, 2017, 7:07 PM"
@@ -948,7 +948,7 @@ extension Date {
 }
 
 // MARK: - Initializers
-extension Date {
+public extension Date {
     /// SwifterSwift: Create a new date form calendar components.
     ///
     ///     let date = Date(year: 2010, month: 1, day: 12) // "Jan 12, 2010, 7:45 PM"
@@ -1029,7 +1029,7 @@ extension Date {
 
 #endif
 
-extension Date {
+public extension Date {
     var utcCalendar: Calendar {
         var calendar = Calendar(identifier: .iso8601)
         calendar.timeZone = TimeZone(identifier: "UTC")!

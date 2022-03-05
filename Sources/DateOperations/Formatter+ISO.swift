@@ -7,7 +7,7 @@
 
 import Foundation
 
-extension Formatter {
+public extension Formatter {
     static let iso8601: ISO8601DateFormatter = {
         let formatter = ISO8601DateFormatter()
         formatter.formatOptions = [.withInternetDateTime, .withFractionalSeconds]
@@ -23,7 +23,7 @@ extension Formatter {
     }()
 }
 
-extension JSONDecoder.DateDecodingStrategy {
+public extension JSONDecoder.DateDecodingStrategy {
     static let customISO8601 = custom {
         let container = try $0.singleValueContainer()
         let string = try container.decode(String.self)
@@ -34,7 +34,7 @@ extension JSONDecoder.DateDecodingStrategy {
     }
 }
 
-extension JSONDecoder {
+public extension JSONDecoder {
     @available(*, deprecated, renamed: "druidDecoder")
     static var telemetryDecoder: JSONDecoder = {
         return druidDecoder
@@ -47,7 +47,7 @@ extension JSONDecoder {
     }()
 }
 
-extension JSONEncoder {
+public extension JSONEncoder {
     @available(*, deprecated, renamed: "druidEncoder")
     static var telemetryEncoder: JSONEncoder = {
         return druidEncoder
