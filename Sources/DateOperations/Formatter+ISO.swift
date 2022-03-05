@@ -21,6 +21,14 @@ public extension Formatter {
         formatter.formatOptions = [.withFullDate]
         return formatter
     }()
+    
+    static func customISO8601(from string: String) -> Date? {
+        if let date = Formatter.iso8601.date(from: string) ?? Formatter.iso8601noFS.date(from: string) {
+            return date
+        }
+        
+        return nil
+    }
 }
 
 public extension JSONDecoder.DateDecodingStrategy {
@@ -35,27 +43,27 @@ public extension JSONDecoder.DateDecodingStrategy {
 }
 
 public extension JSONDecoder {
-    @available(*, deprecated, renamed: "druidDecoder")
     static var telemetryDecoder: JSONDecoder = {
-        return druidDecoder
-    }()
-
-    static var druidDecoder: JSONDecoder = {
         let decoder = JSONDecoder()
         decoder.dateDecodingStrategy = .customISO8601
         return decoder
     }()
+
+    @available(*, deprecated, renamed: "telemetryDecoder")
+    static var druidDecoder: JSONDecoder = {
+        return telemetryDecoder
+    }()
 }
 
 public extension JSONEncoder {
-    @available(*, deprecated, renamed: "druidEncoder")
-    static var telemetryEncoder: JSONEncoder = {
-        return druidEncoder
-    }()
-    
+    @available(*, deprecated, renamed: "telemetryEncoder")
     static var druidEncoder: JSONEncoder = {
+        telemetryEncoder
+    }()
+
+    static var telemetryEncoder: JSONEncoder = {
         let encoder = JSONEncoder()
-        encoder.outputFormatting = .withoutEscapingSlashes
+        encoder.outputFormatting = [.withoutEscapingSlashes, .sortedKeys]
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
         dateFormatter.locale = Locale(identifier: "en_US")
