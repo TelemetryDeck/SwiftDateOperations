@@ -603,7 +603,6 @@ public extension Date {
         }
     }
 
-    #if !os(Linux)
     // swiftlint:enable cyclomatic_complexity, function_body_length
     /// SwifterSwift: Data at the beginning of calendar component.
     ///
@@ -647,7 +646,6 @@ public extension Date {
         guard !components.isEmpty else { return nil }
         return calendar.date(from: calendar.dateComponents(components, from: self))
     }
-    #endif
 
     // swiftlint:disable function_body_length
     /// SwifterSwift: Date at the end of calendar component.
