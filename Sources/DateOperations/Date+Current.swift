@@ -11,6 +11,7 @@ import Glibc
 #endif
 
 // MARK: - Enums
+
 public extension Date {
     /// SwifterSwift: Day name format.
     ///
@@ -46,12 +47,12 @@ public extension Date {
 }
 
 // MARK: - Properties
+
 public extension Date {
     /// SwifterSwift: User’s current calendar.
     var calendar: Calendar {
-        // Workaround to segfault on corelibs foundation https://bugs.swift.org/browse/SR-10147
-        asdasdasd
-        return Calendar(identifier: Calendar.current.identifier)
+        let cal = Calendar(identifier: .iso8601)
+        return cal
     }
 
     /// SwifterSwift: Era.
@@ -497,6 +498,7 @@ public extension Date {
 }
 
 // MARK: - Methods
+
 public extension Date {
     /// SwifterSwift: Date by adding multiples of calendar component.
     ///
@@ -938,7 +940,8 @@ public extension Date {
     ///   - generator: The random number generator to use when creating the new random date.
     /// - Returns: A random date within the bounds of `range`.
     static func random<T>(in range: ClosedRange<Date>, using generator: inout T) -> Date
-        where T: RandomNumberGenerator {
+        where T: RandomNumberGenerator
+    {
         return Date(timeIntervalSinceReferenceDate:
             TimeInterval.random(
                 in: range.lowerBound.timeIntervalSinceReferenceDate...range.upperBound.timeIntervalSinceReferenceDate,
@@ -947,6 +950,7 @@ public extension Date {
 }
 
 // MARK: - Initializers
+
 public extension Date {
     /// SwifterSwift: Create a new date form calendar components.
     ///
@@ -973,7 +977,8 @@ public extension Date {
         hour: Int? = Date().hour,
         minute: Int? = Date().minute,
         second: Int? = Date().second,
-        nanosecond: Int? = Date().nanosecond) {
+        nanosecond: Int? = Date().nanosecond)
+    {
         var components = DateComponents()
         components.calendar = calendar
         components.timeZone = timeZone
