@@ -51,7 +51,9 @@ public extension Date {
 public extension Date {
     /// SwifterSwift: User’s current calendar.
     var calendar: Calendar {
-        let cal = Calendar(identifier: .iso8601)
+        var cal = Calendar(identifier: .iso8601)
+        cal.timeZone = TimeZone(identifier: "UTC")!
+        cal.firstWeekday = 2 // Monday = 2 in Swift
         return cal
     }
 
