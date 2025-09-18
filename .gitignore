@@ -89,3 +89,8 @@ fastlane/test_output
 
 iOSInjectionProject/
 .DS_Store
+
+# avoid sharing ContextKit artifacts & Claude Code settings
+.claude/
+Context.md
+Context/
