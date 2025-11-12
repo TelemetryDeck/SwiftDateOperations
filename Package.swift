@@ -1,4 +1,4 @@
-// swift-tools-version:5.5
+// swift-tools-version:6.0
 // The swift-tools-version declares the minimum version of Swift required to build this package.
 
 import PackageDescription
@@ -6,7 +6,7 @@ import PackageDescription
 let package = Package(
     name: "DateOperations",
     platforms: [
-        .macOS(.v11),
+        .macOS(.v13),
         .iOS(.v14),
     ],
     products: [
@@ -28,5 +28,4 @@ let package = Package(
         .testTarget(
             name: "DateOperationsTests",
             dependencies: ["DateOperations"]),
-    ]
-)
+    ])
