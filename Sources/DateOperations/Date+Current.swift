@@ -640,6 +640,9 @@ public extension Date {
             case .month:
                 return [.year, .month]
 
+            case .quarter:
+                return [.year, .quarter]
+
             case .year:
                 return [.year]
 
